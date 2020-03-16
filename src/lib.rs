@@ -26,7 +26,12 @@ cfg_if! {
 
 #[wasm_bindgen]
 pub fn convert_string(data: String) -> String{
-    let g = Grid::from_str(&*data, &Settings::default());
+    let settings = Settings {
+        background_color: "transparent".into(),
+        ..Settings::default()
+    };
+
+    let g = Grid::from_str(&*data, &settings);
     let svg = g.get_svg();
     let mut file = Vec::new();
 

@@ -1,6 +1,6 @@
 [package]
 name = "svgbob-wasm"
-version = "0.1.0"
+version = "0.2.1"
 authors = ["Angus Hollands <goosey15@gmail.com>"]
 license = "Apache-2.0"
 description = "A small WASM API to convert ASCII diagrams to SVG using svgbob."
