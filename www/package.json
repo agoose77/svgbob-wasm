@@ -1,0 +1,27 @@
+{
+    "name": "test-svgbob-wasm",
+    "version": "0.0.0",
+    "description": "create an app to test svgbob-wasm",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack-dev-server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rustwasm/create-wasm-app.git"
+    },
+    "keywords": [
+        "webassembly",
+        "wasm",
+        "rust"
+    ],
+    "author": "Angus Hollands <goosey15@gmail.com>",
+    "license": "(MIT OR Apache-2.0)",
+    "dependencies": {
+        "svgbob-wasm": "file:../pkg",
+        "copy-webpack-plugin": "^5.0.0",
+        "webpack": "^4.16.3",
+        "webpack-cli": "^3.1.0",
+        "webpack-dev-server": "^3.1.5"
+    }
+}
