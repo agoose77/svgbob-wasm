@@ -1,44 +1,24 @@
-extern crate cfg_if;
-extern crate wasm_bindgen;
-
-extern crate svg;
-extern crate svgbob;
-
-use svgbob::Grid;
-use svgbob::Settings;
-
-
 mod utils;
 
-use cfg_if::cfg_if;
+use svgbob::to_svg_with_settings;
+use svgbob::Settings;
+
 use wasm_bindgen::prelude::*;
 
 
-cfg_if! {
-    // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
-    // allocator.
-    if #[cfg(feature = "wee_alloc")] {
-        extern crate wee_alloc;
-        #[global_allocator]
-        static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-    }
-}
+// When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
+// allocator.
+#[cfg(feature = "wee_alloc")]
+#[global_allocator]
+static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
 
 #[wasm_bindgen]
-pub fn convert_string(data: String) -> String{
+pub fn render(ascii: &str) -> String{
     let settings = Settings {
-        background_color: "transparent".into(),
+        background: "transparent".into(),
         ..Settings::default()
     };
 
-    let g = Grid::from_str(&*data, &settings);
-    let svg = g.get_svg();
-    let mut file = Vec::new();
-
-    // Return empty string if error occurred during writing
-    if let Err(_e) = svg::write(&mut file, &svg) {
-        return String::new();
-    }
-
-    String::from_utf8(file).unwrap()
+    to_svg_with_settings(ascii, &settings)
 }
