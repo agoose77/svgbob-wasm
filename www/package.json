@@ -10,7 +10,7 @@
     "license": "(MIT OR Apache-2.0)",
     "dependencies": {
         "svgbob-wasm": "file:../pkg",
-        "webpack": "^5.0.0",
+        "webpack": "^5.76.0",
         "webpack-cli": "^4.9.0",
         "webpack-dev-server": "^4.3.0"
     }
